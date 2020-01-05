@@ -14,12 +14,14 @@
 .down-par {
   font-weight: 400;
   font-size: 18px;
+  max-width: 900px;
 }
 
 @media (min-width: 992px) {
   .down-par {
     font-weight: 400;
     font-size: 20px;
+    max-width: 900px;
   }
 }
 
@@ -72,6 +74,7 @@
   font-size: 32px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 35px;
   color: white;
 }
 
@@ -87,7 +90,7 @@
   background-color: #31363b;
 }
 
-.col-md-4.imagecol {
+.imagecol {
   background-color: transparent;
   padding-top: 20px;
 }
