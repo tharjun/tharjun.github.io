@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>KDE Connect</title>
+
+    
+    
+    <meta name="keywords" content=""/>
+    
+
+    <!-- Icons -->
+    <link href="/assets/aether/media/192x192.png" rel="icon" sizes="192x192" />
+    <link href="/assets/aether/media/180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/assets/aether/media/128x128.svg" rel="icon" sizes="128x128" />
+    <link href="/assets/aether/media/64x64.svg" rel="icon" sizes="64x64" />
+    <link href="/assets/aether/media/32x32.svg" rel="icon" sizes="32x32" />
+    <link href="/assets/aether/media/24x24.svg" rel="icon" sizes="24x24" />
+    <link href="/assets/aether/media/16x16.svg" rel="icon" sizes="16x16" />
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/bootstrap.css?4-jekyll">
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/aether-kde-org.css?4-jekyll">
+
+    <link rel="stylesheet" href="/css/main.css?4-jekyll">
+
+    <!-- Standard JS Files, bootstrap Async -->
+    <script src="https://cdn.kde.org/aether-devel/bootstrap.js?4-jekyll" defer=""></script>
+
+</head>
+
+
+
+    <body data-spy="scroll" data-target="#kHeaderCarousel" data-offset="50">
+
+    <header id="KGlobalHeader" class="header clearfix">
+    <nav class="navbar navbar-expand-lg  with-made-by-kde ">
+        
+            <a class="app-logo navbar-brand active" href="/">
+                <img src="/assets/img/KDE_Logo.png" alt="Logo" />
+            </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-kde" aria-controls="navbar-kde" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-kde">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/" aria-haspopup="true" aria-expanded="false">KDE Connect</a>
+                </li>
+                
+
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/download.html">Download</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/users.html">User support</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/get-involved.html">Get Involved</a>
+                  </li>
+                  
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarnews" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        News
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarnews">
+                        
+                            <a class="dropdown-item" href="/official">Official Announcement</a>
+                        
+                            <a class="dropdown-item" href="/dev">Developer Blogs</a>
+                        
+                    </div>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="https://www.kde.org/donate">Donate</a>
+                  </li>
+                  
+                
+            </ul>
+        </div>
+        
+        <a class="made-by-kde" href="https://kde.org">
+            Made by KDE
+        </a>
+        
+    </nav>
+</header>
+
+
+    <main class="container">
+  <h1>Creating a Plasma Mobile App 1 – Basic Controls</h1>
+  
+  <h5 style="margin-left: 50px;"><small>- &nbsp;Nicolas Fella</small></h5>
+  
+  <p><p>My last post shows how to create a stub Python/Kirigami app that doesn&#8217;t do anything. Time to change that! In this post we&#8217;re filling the screen with some controls.</p>
+
+
+
+<h2>Kirigami Pages</h2>
+
+
+
+<p>Kirigami apps are typically organized in Pages. Those are the different &#8216;Screens&#8217; of an app. If you come from the Android world you can think of them as the view part of activities. In our case we want to have an initial page that offers to enter a stop or a destination and opens a new page that shows a list of possible routes. Clicking on one of the list items opens a new page with a detailed view about the connections.</p>
+
+
+
+<p>Pages are organized in a pagestack where pages can be pushed and popped.  On a phone only the topmost page is shown, whereas on a larger screen (desktop or tablet) multiple pages can be shown next to each other.</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="173" data-permalink="https://nicolasfella.wordpress.com/image-3/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-3.png" data-orig-size="540,810" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-3" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-3.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-3.png?w=540" src="https://nicolasfella.files.wordpress.com/2019/02/image-3.png" alt="" class="wp-image-173" /><figcaption>A single page on the phone</figcaption></figure>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="174" data-permalink="https://nicolasfella.wordpress.com/image-4/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-4.png" data-orig-size="1214,919" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-4" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-4.png?w=300" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-4.png?w=1024" src="https://nicolasfella.files.wordpress.com/2019/02/image-4.png" alt="" class="wp-image-174" /><figcaption>Two pages next to each other on the desktop</figcaption></figure>
+
+
+
+<p>So let&#8217;s create some pages! I&#8217;m going put each page in its own .qml file and let the name end with Page. Our first version of StartPage.qml looks like this:</p>
+
+
+
+<pre class="wp-block-code"><code>import QtQuick 2.2
+import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.4
+import org.kde.kirigami 2.0 as Kirigami
+
+Kirigami.Page
+{
+    title: "Start journey"
+}</code></pre>
+
+
+
+<p>It produces an empty page with a title. Before we can actually see it we need to add it to the pageStack. Replace the Label {} declaration in main.qml with</p>
+
+
+
+<pre class="wp-block-code"><code>pageStack.initialPage: Qt.resolvedUrl("StartPage.qml")</code></pre>
+
+
+
+<p>pageStack.initialPage is, well, setting the initial Page of the Page stack.  Qt.resolveUrl is converting the relative URL of the QML file into an absolute one. Starting the app gives us an empty page</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="177" data-permalink="https://nicolasfella.wordpress.com/image-5/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-5.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-5" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-5.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-5.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-5.png" alt="" class="wp-image-177" /></figure>
+
+
+
+<p>Time to fill it with some content.</p>
+
+
+
+<h2>Basic controls</h2>
+
+
+
+<p>On the start page we need need a way to enter start and destination of our journey as well as the date and time of our travel. For start and destination we are using simple TextFields from QtQuick Controls 2. Note that the older version 1 of QtQuick Controls is still around for the foreseable future, but we want to avoid using that. We&#8217;re extending StartPage.qml with our controls</p>
+
+
+
+<pre class="wp-block-code"><code>ColumnLayout {
+    width: parent.width
+
+    Label {
+        text: "From:"
+    }
+    TextField {
+        Layout.fillWidth: true
+        placeholderText: "Würzburg..."
+    }
+    Label {
+        text: "To:"
+    }
+    TextField {
+        Layout.fillWidth: true
+        placeholderText: "Berlin..."
+    }
+}</code></pre>
+
+
+
+<p>A ColumnLayout is a component that positions its children vertically. We set it to be as wide as its parent, the page. The TextFields shall span the whole width as well. Instead of using the same &#8216;width: parent.width&#8217; we are using &#8216;Layout.fillWidth: true&#8217;. This property is only available to children of a Layout. The difference to the first way is that all the width that is not already occupied by other elements in the layout is filled.</p>
+
+
+
+<p>Next we need some way to enter a departure date and time. Unfortunately I&#8217;m not aware of any ready-to-use date and time pickers in QtQuick and Kirigami, so I&#8217;ll leave this open for a future post. For the time being two simple placeholder buttons shall be enough. Let&#8217;s add them to our ColumnLayout</p>
+
+
+
+<pre class="wp-block-code"><code>RowLayout {
+    width: parent.width
+    Button {
+        text: "Pick date"
+        Layout.fillWidth: true
+    }
+    Button {
+        text: "Pick time"
+        Layout.fillWidth: true
+    }
+}</code></pre>
+
+
+
+<p>Now our app looks like this. Both buttons have the &#8220;Layout.fillWidth&#8221; property set to true, resulting in each one getting 50% of the space.</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="180" data-permalink="https://nicolasfella.wordpress.com/image-6/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-6.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-6" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-6.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-6.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-6.png" alt="" class="wp-image-180" /></figure>
+
+
+
+<p>The buttons look a bit weird, don&#8217;t they? That&#8217;s because they are using the built-in QtQuick Controls style. If you are using Plasma you are probably used to the org.kde.desktop style which emulates the active Qt Widgets style. We can force our app to use the org.kde.desktop style by running &#8216;QT_QUICK_CONTROLS_STYLE=&#8221;org.kde.desktop&#8221; ./main.py&#8217;</p>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="181" data-permalink="https://nicolasfella.wordpress.com/image-7/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-7.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-7" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-7.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-7.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-7.png" alt="" class="wp-image-181" /></figure>
+
+
+
+<p>Looks closer to what we have on the desktop, doesn&#8217;t it? Qt also offers a &#8216;material&#8217; style that follows Android&#8217;s material guidelines</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="182" data-permalink="https://nicolasfella.wordpress.com/image-8/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-8.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-8" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-8.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-8.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-8.png" alt="" class="wp-image-182" /></figure>
+
+
+
+<p>Next we need a way to press &#8220;Search&#8221;. We could solve that with yet another button, but Kirigami offers another way. Pages in Kirigami can have Actions associated with them. The presentation differes from the phone to the desktop. On the phone actions are displayed on the bottom where they are easily reachable while on the desktop they are displayed in form of a toolbar at the top of the page. Let&#8217;s add an action to our page</p>
+
+
+
+<pre class="wp-block-code"><code>Kirigami.Page
+{
+    id: root
+
+    title: "Start journey"
+
+    actions.main: Kirigami.Action {
+        icon.name: "search"
+        text: "Search"
+        onTriggered: pageStack.push(Qt.resolvedUrl("ConnectionsPage.qml"))
+    }
+
+    ColumnLayout {
+</code></pre>
+
+
+
+<p>On the phone we get this</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="184" data-permalink="https://nicolasfella.wordpress.com/image-9/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-9.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-9" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-9.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-9.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-9.png" alt="" class="wp-image-184" /></figure>
+
+
+
+<p>while on the desktop we get that</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="185" data-permalink="https://nicolasfella.wordpress.com/image-10/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image-10.png" data-orig-size="480,720" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-10" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image-10.png?w=200" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image-10.png?w=480" src="https://nicolasfella.files.wordpress.com/2019/02/image-10.png" alt="" class="wp-image-185" /></figure>
+
+
+
+<p>You can force the mobile view on the desktop by setting the QT_QUICK_CONTROLS_MOBILE variable to 1.</p>
+
+
+
+<p>Triggering the action pushes ConnectionsPage.qml on the pageStack. Of cource we need to create that one now:</p>
+
+
+
+<pre class="wp-block-code"><code>import QtQuick 2.2
+import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.4
+import org.kde.kirigami 2.4 as Kirigami
+
+Kirigami.Page
+{
+    title: "Connections"
+}
+</code></pre>
+
+
+
+<p>Right now it&#8217;s just an empty page, we&#8217;re going to fill it with life in the next post.</p>
+
+
+
+<p>You can find the full source code for all posts on <a href="https://invent.kde.org/nicolasfella/kstraba">Git</a>.</p>
+
+
+
+<p>Happy hacking!</p></p>
+</main>
+
+
+    <footer id="kFooter" class="footer">
+    <section id="kFooterIncome" class="container">
+        <div id="kDonateForm" class="w-100">
+            <div class="center">
+                <h3>
+                    Donate to KDE
+                    <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
+                </h3>
+
+                <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input type="hidden" name="lc" value="GB" />
+                    <input type="hidden" name="item_name" value="Development and communication of KDE software" />
+                    <input type="hidden" name="custom" value="/" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="cbt" value="Return to www.kde.org" />
+                    <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
+                    <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
+                    <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
+                    <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
+                    <button type='submit' id="donateSubmit">Donate via PayPal</button>
+                </form>
+
+                <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kLinks" class="container">
+        <div class="row">
+            
+                
+                    <nav class="col-sm">
+                        <h3>Products</h3>
+                        
+                            <a href="https://kde.org/plasma-desktop">Plasma</a>
+                        
+                            <a href="https://kde.org/applications/">KDE Applications</a>
+                        
+                            <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
+                        
+                            <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+                        
+                            <a href="https://neon.kde.org/">KDE neon</a>
+                        
+                            <a href="https://wikitolearn.org/">WikiToLearn</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Develop</h3>
+                        
+                            <a href="https://techbase.kde.org/">TechBase Wiki</a>
+                        
+                            <a href="https://api.kde.org/">API Documentation</a>
+                        
+                            <a href="https://doc.qt.io/">Qt Documentation</a>
+                        
+                            <a href="https://inqlude.org/">Inqlude Documentation</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>News &amp; Press</h3>
+                        
+                            <a href="https://kde.org/announcements/">Announcements</a>
+                        
+                            <a href="https://dot.kde.org/">KDE.news</a>
+                        
+                            <a href="https://planetkde.org/">Planet KDE</a>
+                        
+                            <a href="https://www.kde.org/screenshots">Screenshots</a>
+                        
+                            <a href="https://www.kde.org/contact/">Press Contact</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Resources</h3>
+                        
+                            <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+                        
+                            <a href="https://userbase.kde.org/">UserBase Wiki</a>
+                        
+                            <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+                        
+                            <a href="https://kde.org/support/">Support</a>
+                        
+                            <a href="https://kde.org/support/international.php">International Websites</a>
+                        
+                            <a href="https://kde.org/download/">Download KDE Software</a>
+                        
+                            <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Destinations</h3>
+                        
+                            <a href="https://store.kde.org/">KDE Store</a>
+                        
+                            <a href="https://ev.kde.org/">KDE e.V.</a>
+                        
+                            <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+                        
+                            <a href="https://timeline.kde.org/">KDE Timeline</a>
+                        
+                    </nav>
+                
+            
+        </div>
+    </section>
+
+    <section id="kSocial" class="container kSocialLinks">
+        <a class="shareFacebook" href="https://www.facebook.com/kde/" rel="nofollow">Post on Facebook</a>
+        <a class="shareTwitter" href="https://twitter.com/kdecommunity" rel="nofollow">Share on Twitter</a>
+        <a class="shareDiaspora" href="https://joindiaspora.com/people/9c3d1a454919ef06" rel="nofollow">Share on Diaspora</a>
+        <a class="shareMastodon" href="https://mastodon.technology/@kde" rel="me nofollow">Share on Mastodon</a>
+        <a class="shareLinkedIn" href="https://www.linkedin.com/company/29561/" rel="nofollow">Share on LinkedIn</a>
+        <a class="shareReddit" href="https://www.reddit.com/r/kde/" rel="nofollow">Share on Reddit</a>
+        <a class="shareYouTube" href="https://www.youtube.com/channel/UCF3I1gf7GcbmAb0mR6vxkZQ" rel="nofollow">Share on YouTube</a>
+        <a class="sharePeerTube" href="https://peertube.mastodon.host/accounts/kde/videos" rel="nofollow">Share on PeerTube</a>
+        <a class="shareVK" href="https://vk.com/kde_ru" rel="nofollow">Share on VK</a>
+    </section>
+
+    <section id="kLegal" class="container">
+        <div class="row">
+            <small class="col-4">
+                Maintained by <a href="mailto:kde-www@kde.org">KDE www</a>
+            </small>
+            <small class="col-8 text-right">
+                KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+            </small>
+        </div>
+    </section>
+</footer>
+
+
+
+
+    </body>
+</html>

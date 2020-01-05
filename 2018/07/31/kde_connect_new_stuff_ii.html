@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>KDE Connect</title>
+
+    
+    
+    <meta name="keywords" content=""/>
+    
+
+    <!-- Icons -->
+    <link href="/assets/aether/media/192x192.png" rel="icon" sizes="192x192" />
+    <link href="/assets/aether/media/180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/assets/aether/media/128x128.svg" rel="icon" sizes="128x128" />
+    <link href="/assets/aether/media/64x64.svg" rel="icon" sizes="64x64" />
+    <link href="/assets/aether/media/32x32.svg" rel="icon" sizes="32x32" />
+    <link href="/assets/aether/media/24x24.svg" rel="icon" sizes="24x24" />
+    <link href="/assets/aether/media/16x16.svg" rel="icon" sizes="16x16" />
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/bootstrap.css?4-jekyll">
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/aether-kde-org.css?4-jekyll">
+
+    <link rel="stylesheet" href="/css/main.css?4-jekyll">
+
+    <!-- Standard JS Files, bootstrap Async -->
+    <script src="https://cdn.kde.org/aether-devel/bootstrap.js?4-jekyll" defer=""></script>
+
+</head>
+
+
+
+    <body data-spy="scroll" data-target="#kHeaderCarousel" data-offset="50">
+
+    <header id="KGlobalHeader" class="header clearfix">
+    <nav class="navbar navbar-expand-lg  with-made-by-kde ">
+        
+            <a class="app-logo navbar-brand active" href="/">
+                <img src="/assets/img/KDE_Logo.png" alt="Logo" />
+            </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-kde" aria-controls="navbar-kde" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-kde">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/" aria-haspopup="true" aria-expanded="false">KDE Connect</a>
+                </li>
+                
+
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/download.html">Download</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/users.html">User support</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/get-involved.html">Get Involved</a>
+                  </li>
+                  
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarnews" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        News
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarnews">
+                        
+                            <a class="dropdown-item" href="/official">Official Announcement</a>
+                        
+                            <a class="dropdown-item" href="/dev">Developer Blogs</a>
+                        
+                    </div>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="https://www.kde.org/donate">Donate</a>
+                  </li>
+                  
+                
+            </ul>
+        </div>
+        
+        <a class="made-by-kde" href="https://kde.org">
+            Made by KDE
+        </a>
+        
+    </nav>
+</header>
+
+
+    <main class="container">
+  <h1>KDE Connect – New Stuff II</h1>
+  
+  <h5 style="margin-left: 50px;"><small>- &nbsp;Nicolas Fella</small></h5>
+  
+  <p><p>It&#8217;s time for another feature update for KDE Connect!</p>
+<p>You can now run commands on connected devices from the Plasmoid.</p>
+<div class="lightbox-image-frame"><img class="" src="https://phabricator.kde.org/file/data/efceohbdflljsqmcxbki/PHID-FILE-2g5rpbjbnhrztkzxgoer/rc.png" alt="" /></div>
+<div></div>
+<p>The Dolphin context menu entry for sending files to a connected device has been dropped in favour of a <a href="https://nicolasfella.wordpress.com/2018/07/08/the-purpose-of-things/">Purpose plugin</a>, which groups nicely with other Share features and supports more apps such as Okular and Spectacle.</p>
+<p>Albert Vaka added a presentation mode to Android which allows you to control slideshows from your phone. Aleix Pol added the same to the Kirigami app.</p>
+<p><img class="" src="https://phabricator.kde.org/file/data/622tjt2v7wqsshovusmq/PHID-FILE-uun2yarn44osg6yaam7t/Screenshot_20180731-120640.jpg" alt="" width="427" height="901" /></p>
+<p>&nbsp;</p>
+<p>As I&#8217;ve mentioned before it is quite hard to find the settings where you can define your commands for the Run Command feature.  The command list on Android now has a button that opens the appropriate settings on the desktop. Ivan Čukić added a few useful command suggestions to the menu.</p>
+<p>Friedrich Kossebau added support for a &#8220;Find my PC&#8221; plugin. You might wonder now how often he loses his PC, but it also helps finding other devices that run the C++ version of KDE Connect, such as Plasma Mobile and SailfishOS devices. I added support for triggering it on the Android side.</p>
+<p>Following a request on Reddit I added a dedicated Stop button to the media controller.</p>
+<p>Chansol Yang made sure that the pointer speed when controlling the mouse from the phone is the same across Android devices with various DPIs.</p>
+<p>Philip Cohn-Cort added the much requested dark theme option to Android.</p>
+<p><img data-attachment-id="103" data-permalink="https://nicolasfella.wordpress.com/2018/07/31/kde-connect-new-stuff-ii/screenshot_20180731-154621/" data-orig-file="https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg" data-orig-size="1080,1920" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screenshot_20180731-154621" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=169" data-large-file="https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=576" class="alignnone  wp-image-103" src="https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=576" alt="Screenshot_20180731-154621" width="466" height="829" srcset="https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=576 576w, https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=466 466w, https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=932 932w, https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=84 84w, https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=169 169w, https://nicolasfella.files.wordpress.com/2018/07/screenshot_20180731-154621.jpg?w=768 768w" sizes="(max-width: 466px) 100vw, 466px" /></p>
+<p>You can now use special URLs to trigger commands on connected devices. The urls have the form kdeconnect://runcommand/&lt;deviceid&gt;/&lt;commandid&gt;. As those are quite complex I added a helper for it. You can copy an URL to the clipboard by long-pressing a command in the command list. You can write those URLs into a NFC tag to trigger the command when your phone reads the tag or use it to integrate with services such as Tasker.</p>
+<p>The <a href="https://nicolasfella.wordpress.com/2018/04/30/volume-control-in-kde-connect/">system volume patches</a> have been merged. To make use of it you will need the latest KDE Connect from master for Desktop and Android and pulseaudio-qt installed. You can get pulseaudio-qt from <a href="https://cgit.kde.org/pulseaudio-qt.git">git</a>. We will to an initial 0.1 release soon and hope that distros will ship it soon.</p>
+<p>Besides these features we also fixed some bugs and polished the UI a little.</p>
+<p>Bluetooth support is progressing slowly. Matthijs Tijnk and Qt 5.11 fixed some issues. However, it is still not ready for the public.</p>
+<p>We also improved our device support:</p>
+<p>Aleix and I improved the Kirigami <a href="https://nicolasfella.wordpress.com/2018/06/07/kde-connect-on-plasma-mobile/">app.</a> We improved the basic pairing workflow and  you can now run commands and control media sessions.</p>
+<p>Bart Ribbers fixed an issue that was blocking KDE Connect from building it for postmarketOS. I hope to see KDE Connect there as well!</p>
+<p>Adam Pigg made a huge step towards bringing KDE Connect to Sailfish OS.</p>
+<p>We like to see KDE Connect on as many platforms as possible, and we need your help for it! Our <a href="https://phabricator.kde.org/project/board/159/">workboard</a> contains lots of ideas for new people to get started. You can ask for any assistance in our <a href="https://t.me/joinchat/AOS6gA37orb2dZCLhqbZjg">Telegram group</a>.</p>
+<p>Thanks to all contributors!</p></p>
+</main>
+
+
+    <footer id="kFooter" class="footer">
+    <section id="kFooterIncome" class="container">
+        <div id="kDonateForm" class="w-100">
+            <div class="center">
+                <h3>
+                    Donate to KDE
+                    <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
+                </h3>
+
+                <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input type="hidden" name="lc" value="GB" />
+                    <input type="hidden" name="item_name" value="Development and communication of KDE software" />
+                    <input type="hidden" name="custom" value="/" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="cbt" value="Return to www.kde.org" />
+                    <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
+                    <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
+                    <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
+                    <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
+                    <button type='submit' id="donateSubmit">Donate via PayPal</button>
+                </form>
+
+                <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kLinks" class="container">
+        <div class="row">
+            
+                
+                    <nav class="col-sm">
+                        <h3>Products</h3>
+                        
+                            <a href="https://kde.org/plasma-desktop">Plasma</a>
+                        
+                            <a href="https://kde.org/applications/">KDE Applications</a>
+                        
+                            <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
+                        
+                            <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+                        
+                            <a href="https://neon.kde.org/">KDE neon</a>
+                        
+                            <a href="https://wikitolearn.org/">WikiToLearn</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Develop</h3>
+                        
+                            <a href="https://techbase.kde.org/">TechBase Wiki</a>
+                        
+                            <a href="https://api.kde.org/">API Documentation</a>
+                        
+                            <a href="https://doc.qt.io/">Qt Documentation</a>
+                        
+                            <a href="https://inqlude.org/">Inqlude Documentation</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>News &amp; Press</h3>
+                        
+                            <a href="https://kde.org/announcements/">Announcements</a>
+                        
+                            <a href="https://dot.kde.org/">KDE.news</a>
+                        
+                            <a href="https://planetkde.org/">Planet KDE</a>
+                        
+                            <a href="https://www.kde.org/screenshots">Screenshots</a>
+                        
+                            <a href="https://www.kde.org/contact/">Press Contact</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Resources</h3>
+                        
+                            <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+                        
+                            <a href="https://userbase.kde.org/">UserBase Wiki</a>
+                        
+                            <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+                        
+                            <a href="https://kde.org/support/">Support</a>
+                        
+                            <a href="https://kde.org/support/international.php">International Websites</a>
+                        
+                            <a href="https://kde.org/download/">Download KDE Software</a>
+                        
+                            <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Destinations</h3>
+                        
+                            <a href="https://store.kde.org/">KDE Store</a>
+                        
+                            <a href="https://ev.kde.org/">KDE e.V.</a>
+                        
+                            <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+                        
+                            <a href="https://timeline.kde.org/">KDE Timeline</a>
+                        
+                    </nav>
+                
+            
+        </div>
+    </section>
+
+    <section id="kSocial" class="container kSocialLinks">
+        <a class="shareFacebook" href="https://www.facebook.com/kde/" rel="nofollow">Post on Facebook</a>
+        <a class="shareTwitter" href="https://twitter.com/kdecommunity" rel="nofollow">Share on Twitter</a>
+        <a class="shareDiaspora" href="https://joindiaspora.com/people/9c3d1a454919ef06" rel="nofollow">Share on Diaspora</a>
+        <a class="shareMastodon" href="https://mastodon.technology/@kde" rel="me nofollow">Share on Mastodon</a>
+        <a class="shareLinkedIn" href="https://www.linkedin.com/company/29561/" rel="nofollow">Share on LinkedIn</a>
+        <a class="shareReddit" href="https://www.reddit.com/r/kde/" rel="nofollow">Share on Reddit</a>
+        <a class="shareYouTube" href="https://www.youtube.com/channel/UCF3I1gf7GcbmAb0mR6vxkZQ" rel="nofollow">Share on YouTube</a>
+        <a class="sharePeerTube" href="https://peertube.mastodon.host/accounts/kde/videos" rel="nofollow">Share on PeerTube</a>
+        <a class="shareVK" href="https://vk.com/kde_ru" rel="nofollow">Share on VK</a>
+    </section>
+
+    <section id="kLegal" class="container">
+        <div class="row">
+            <small class="col-4">
+                Maintained by <a href="mailto:kde-www@kde.org">KDE www</a>
+            </small>
+            <small class="col-8 text-right">
+                KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+            </small>
+        </div>
+    </section>
+</footer>
+
+
+
+
+    </body>
+</html>

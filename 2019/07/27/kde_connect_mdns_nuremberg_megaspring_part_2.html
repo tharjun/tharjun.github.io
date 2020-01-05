@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>KDE Connect</title>
+
+    
+    
+    <meta name="keywords" content=""/>
+    
+
+    <!-- Icons -->
+    <link href="/assets/aether/media/192x192.png" rel="icon" sizes="192x192" />
+    <link href="/assets/aether/media/180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/assets/aether/media/128x128.svg" rel="icon" sizes="128x128" />
+    <link href="/assets/aether/media/64x64.svg" rel="icon" sizes="64x64" />
+    <link href="/assets/aether/media/32x32.svg" rel="icon" sizes="32x32" />
+    <link href="/assets/aether/media/24x24.svg" rel="icon" sizes="24x24" />
+    <link href="/assets/aether/media/16x16.svg" rel="icon" sizes="16x16" />
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/bootstrap.css?4-jekyll">
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/aether-kde-org.css?4-jekyll">
+
+    <link rel="stylesheet" href="/css/main.css?4-jekyll">
+
+    <!-- Standard JS Files, bootstrap Async -->
+    <script src="https://cdn.kde.org/aether-devel/bootstrap.js?4-jekyll" defer=""></script>
+
+</head>
+
+
+
+    <body data-spy="scroll" data-target="#kHeaderCarousel" data-offset="50">
+
+    <header id="KGlobalHeader" class="header clearfix">
+    <nav class="navbar navbar-expand-lg  with-made-by-kde ">
+        
+            <a class="app-logo navbar-brand active" href="/">
+                <img src="/assets/img/KDE_Logo.png" alt="Logo" />
+            </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-kde" aria-controls="navbar-kde" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-kde">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/" aria-haspopup="true" aria-expanded="false">KDE Connect</a>
+                </li>
+                
+
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/download.html">Download</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/users.html">User support</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/get-involved.html">Get Involved</a>
+                  </li>
+                  
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarnews" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        News
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarnews">
+                        
+                            <a class="dropdown-item" href="/official">Official Announcement</a>
+                        
+                            <a class="dropdown-item" href="/dev">Developer Blogs</a>
+                        
+                    </div>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="https://www.kde.org/donate">Donate</a>
+                  </li>
+                  
+                
+            </ul>
+        </div>
+        
+        <a class="made-by-kde" href="https://kde.org">
+            Made by KDE
+        </a>
+        
+    </nav>
+</header>
+
+
+    <main class="container">
+  <h1>KDE Connect mDNS: Nuremberg Megaspring Part 2</h1>
+  
+  <h5 style="margin-left: 50px;"><small>- &nbsp;Simon Redman</small></h5>
+  
+  <p><p>Sprints are a great time to talk in real-time to other project developers. One of the things we talked about at the KDE Connect part of the &#8220;Nuremberg Megasprint&#8221; was the problem that our current discovery protocol often doesn&#8217;t work, since many networks block the UDP broadcast we currently use. Additionally, we often get feature requests for more privacy-conscious modes of KDE Connect operation. Fixing either of these problems would require a new Link Provider (as we call it), and maybe we can fix both at once.</p>
+<h3>A New Backend</h3>
+<p>First, let&#8217;s talk about discovery. The current service discovery mechanism in KDE Connect is we send a multicast UDP packet to the current device&#8217;s /24 subnet. This is not ideal, since some networks are not /24, and since many public networks block packets of this sort. Alternatively, you can manually add an IP address which then establishes a direct connection. Manual connections work on many networks with block UDP, but it is a bit of a hassle. Can we find a better way to auto-discover services?</p>
+<p>A few months ago, a user named rytilahti posted two patches to our Phabricator for KDE Connect service advertisement over mDNS (aka avahi, aka nsd, aka &#8230;). The patches were for advertisement-only (it still doesn&#8217;t establish a connection) but they were a good proof of concept to show that mDNS works on many institutional networks which block UDP multicast since mDNS is frequently used for other things like network printer discovery which are desired by those institutional networks.</p>
+<p>I would post a screenshot here, but I don&#8217;t want to spread details of an internal network too far <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>At the sprint, we talked about whether we would like to move forward with these and we decided it was useful, so Albert Vaca and I put together two proof of concept patches to start trying to establish a connection using mDNS advertisements:</p>
+<ul>
+<li>Android: <a href="https://invent.kde.org/kde/kdeconnect-android/merge_requests/91" rel="nofollow">https://invent.kde.org/kde/kdeconnect-android/merge_requests/91</a></li>
+<li>Qt/C++: <a href="https://invent.kde.org/kde/kdeconnect-kde/merge_requests/147" rel="nofollow">https://invent.kde.org/kde/kdeconnect-kde/merge_requests/147</a></li>
+</ul>
+<p>The patches are not yet fully working. We can both see each other and attempt to establish a connection but then something goes wrong and one of them crashes. Given that this was less than 8 hours of work, I would call this a success!</p>
+<p>There is still plenty to do, but it was very helpful to be able to sit in-person and talk about what we wanted to accomplish and work out the details of the new protocol.</p>
+<h3>More Privacy</h3>
+<p>Before we talk about privacy, it helps to have a quick view of how KDE Connect currently establishes a connection:</p>
+<ul>
+<li>As described above, both devices send a multicast UDP packet. This is what we call an &#8220;Identity Packet&#8221;, where each device send its name, capabilities (enabled plugins), and unique ID</li>
+<li>If your device receives an identity packet from a device it recognizes, it establishes a secure TCP connection (if both devices open a connection, the duplicate connection is handled and closed)</li>
+</ul>
+<p>As long as we are talking about a new backend, let&#8217;s think about ways to make KDE Connect more privacy-conscious. There are two problems to address:</p>
+<ul>
+<li>Device names often contain personal information. For instances &#8220;Simon&#8217;s Phone&#8221; tells you that &#8220;Simon&#8221; is around</li>
+<li>Device IDs are unique and unchanging. Even assuming I rename my phone, you can still track a particular device by checking for the same ID to show up again and again</li>
+</ul>
+<p>Solving the first problem is easy. We want the user&#8217;s device name so we can display it in the list of available devices to pair with. So, instead of sending that information in the identity all the time, have some &#8220;discovery mode&#8221; switch which otherwise withholds the device name until a connection to an already-trusted device is established.</p>
+<p>This leaves the second problem, which quite a bit more tricky. One answer is to have trusted user-selected trusted wifi networks, so KDE Connect doesn&#8217;t broadcast on a random wifi that the user connects to. But what if I connect to, say, my university network where I want to use KDE Connect but I don&#8217;t want to tell everyone that I&#8217;m here?</p>
+<p>We don&#8217;t have a final answer to this question, but we discussed a few possible solutions. We would like some way of verifying ourselves to the other device which conceals our identity behind some shared secret, so the other device can trust that we are who we say we are, but other devices can&#8217;t fingerprint us. It is a tricky problem but not yet one to solve. Step 1 is to get the new mDNS backend working, step 2 is to add advanced features to it!</p></p>
+</main>
+
+
+    <footer id="kFooter" class="footer">
+    <section id="kFooterIncome" class="container">
+        <div id="kDonateForm" class="w-100">
+            <div class="center">
+                <h3>
+                    Donate to KDE
+                    <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
+                </h3>
+
+                <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input type="hidden" name="lc" value="GB" />
+                    <input type="hidden" name="item_name" value="Development and communication of KDE software" />
+                    <input type="hidden" name="custom" value="/" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="cbt" value="Return to www.kde.org" />
+                    <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
+                    <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
+                    <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
+                    <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
+                    <button type='submit' id="donateSubmit">Donate via PayPal</button>
+                </form>
+
+                <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kLinks" class="container">
+        <div class="row">
+            
+                
+                    <nav class="col-sm">
+                        <h3>Products</h3>
+                        
+                            <a href="https://kde.org/plasma-desktop">Plasma</a>
+                        
+                            <a href="https://kde.org/applications/">KDE Applications</a>
+                        
+                            <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
+                        
+                            <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+                        
+                            <a href="https://neon.kde.org/">KDE neon</a>
+                        
+                            <a href="https://wikitolearn.org/">WikiToLearn</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Develop</h3>
+                        
+                            <a href="https://techbase.kde.org/">TechBase Wiki</a>
+                        
+                            <a href="https://api.kde.org/">API Documentation</a>
+                        
+                            <a href="https://doc.qt.io/">Qt Documentation</a>
+                        
+                            <a href="https://inqlude.org/">Inqlude Documentation</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>News &amp; Press</h3>
+                        
+                            <a href="https://kde.org/announcements/">Announcements</a>
+                        
+                            <a href="https://dot.kde.org/">KDE.news</a>
+                        
+                            <a href="https://planetkde.org/">Planet KDE</a>
+                        
+                            <a href="https://www.kde.org/screenshots">Screenshots</a>
+                        
+                            <a href="https://www.kde.org/contact/">Press Contact</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Resources</h3>
+                        
+                            <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+                        
+                            <a href="https://userbase.kde.org/">UserBase Wiki</a>
+                        
+                            <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+                        
+                            <a href="https://kde.org/support/">Support</a>
+                        
+                            <a href="https://kde.org/support/international.php">International Websites</a>
+                        
+                            <a href="https://kde.org/download/">Download KDE Software</a>
+                        
+                            <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Destinations</h3>
+                        
+                            <a href="https://store.kde.org/">KDE Store</a>
+                        
+                            <a href="https://ev.kde.org/">KDE e.V.</a>
+                        
+                            <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+                        
+                            <a href="https://timeline.kde.org/">KDE Timeline</a>
+                        
+                    </nav>
+                
+            
+        </div>
+    </section>
+
+    <section id="kSocial" class="container kSocialLinks">
+        <a class="shareFacebook" href="https://www.facebook.com/kde/" rel="nofollow">Post on Facebook</a>
+        <a class="shareTwitter" href="https://twitter.com/kdecommunity" rel="nofollow">Share on Twitter</a>
+        <a class="shareDiaspora" href="https://joindiaspora.com/people/9c3d1a454919ef06" rel="nofollow">Share on Diaspora</a>
+        <a class="shareMastodon" href="https://mastodon.technology/@kde" rel="me nofollow">Share on Mastodon</a>
+        <a class="shareLinkedIn" href="https://www.linkedin.com/company/29561/" rel="nofollow">Share on LinkedIn</a>
+        <a class="shareReddit" href="https://www.reddit.com/r/kde/" rel="nofollow">Share on Reddit</a>
+        <a class="shareYouTube" href="https://www.youtube.com/channel/UCF3I1gf7GcbmAb0mR6vxkZQ" rel="nofollow">Share on YouTube</a>
+        <a class="sharePeerTube" href="https://peertube.mastodon.host/accounts/kde/videos" rel="nofollow">Share on PeerTube</a>
+        <a class="shareVK" href="https://vk.com/kde_ru" rel="nofollow">Share on VK</a>
+    </section>
+
+    <section id="kLegal" class="container">
+        <div class="row">
+            <small class="col-4">
+                Maintained by <a href="mailto:kde-www@kde.org">KDE www</a>
+            </small>
+            <small class="col-8 text-right">
+                KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+            </small>
+        </div>
+    </section>
+</footer>
+
+
+
+
+    </body>
+</html>

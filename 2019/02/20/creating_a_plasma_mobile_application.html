@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>KDE Connect</title>
+
+    
+    
+    <meta name="keywords" content=""/>
+    
+
+    <!-- Icons -->
+    <link href="/assets/aether/media/192x192.png" rel="icon" sizes="192x192" />
+    <link href="/assets/aether/media/180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/assets/aether/media/128x128.svg" rel="icon" sizes="128x128" />
+    <link href="/assets/aether/media/64x64.svg" rel="icon" sizes="64x64" />
+    <link href="/assets/aether/media/32x32.svg" rel="icon" sizes="32x32" />
+    <link href="/assets/aether/media/24x24.svg" rel="icon" sizes="24x24" />
+    <link href="/assets/aether/media/16x16.svg" rel="icon" sizes="16x16" />
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/bootstrap.css?4-jekyll">
+    <link rel="stylesheet" href="https://cdn.kde.org/aether-devel/aether-kde-org.css?4-jekyll">
+
+    <link rel="stylesheet" href="/css/main.css?4-jekyll">
+
+    <!-- Standard JS Files, bootstrap Async -->
+    <script src="https://cdn.kde.org/aether-devel/bootstrap.js?4-jekyll" defer=""></script>
+
+</head>
+
+
+
+    <body data-spy="scroll" data-target="#kHeaderCarousel" data-offset="50">
+
+    <header id="KGlobalHeader" class="header clearfix">
+    <nav class="navbar navbar-expand-lg  with-made-by-kde ">
+        
+            <a class="app-logo navbar-brand active" href="/">
+                <img src="/assets/img/KDE_Logo.png" alt="Logo" />
+            </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-kde" aria-controls="navbar-kde" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-kde">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/" aria-haspopup="true" aria-expanded="false">KDE Connect</a>
+                </li>
+                
+
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/download.html">Download</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/users.html">User support</a>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="/get-involved.html">Get Involved</a>
+                  </li>
+                  
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarnews" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        News
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarnews">
+                        
+                            <a class="dropdown-item" href="/official">Official Announcement</a>
+                        
+                            <a class="dropdown-item" href="/dev">Developer Blogs</a>
+                        
+                    </div>
+                  </li>
+                  
+                
+                  
+                  
+                  <li class="nav-item">
+                      <a class="nav-link " href="https://www.kde.org/donate">Donate</a>
+                  </li>
+                  
+                
+            </ul>
+        </div>
+        
+        <a class="made-by-kde" href="https://kde.org">
+            Made by KDE
+        </a>
+        
+    </nav>
+</header>
+
+
+    <main class="container">
+  <h1>Creating a Plasma Mobile application</h1>
+  
+  <h5 style="margin-left: 50px;"><small>- &nbsp;Nicolas Fella</small></h5>
+  
+  <p><p>From February 4th until February 9th I attended a Plasma Mobile sprint in Berlin, Germany. I met a lot of people that share the vision of an open, privacy-friendly mobile platform. However, we all agree that such a platform can only succeed if there are enough people sharing that vision creating suitable apps for it. There already is a nice amount of <a href="https://mglapps.frama.io/">mobile-friendly Linux apps</a>, many of them created by the KDE Community, but of course we need more <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+
+
+<p>One app that is essential for my use case is an app that allows me to check departures and routes for public transport. Since I&#8217;m not aware of any existing one I decided to do my own and share my road here. The purpose of this is to be educating for both me and you and to inspire you to create your own mobile-friendly Linux apps.</p>
+
+
+
+<p>Like the other KDE mobile apps I&#8217;m going to use QML/QtQuick and <a href="https://www.kde.org/products/kirigami/">Kirigami</a>. QML is the declarative UI language from the Qt project. Unlike the older QWidgets it is designed with (embedded) touch systems in mind and thus is ideal for mobile apps. Kirigami is a set of QtQuick components designed for creating convergent mobile/desktop apps.</p>
+
+
+
+<p>Unlike other KDE projects I&#8217;m not going to use C++ for the business logic. Instead I&#8217;m going to use Python, which is now <a href="https://www.qt.io/qt-for-python">officially supported by Qt</a>. Since my Python skills are fairly basic this will be a fun challenge for me. Therefore take everything I write with a grain of salt and feel free to point out anything that is wrong or can be improved. </p>
+
+
+
+<p> This won&#8217;t be a 100% complete reference for developing for Plasma Mobile, but I&#8217;ll try to cover as many different aspects as fit into the concept of this app. I&#8217;ll also try to focus on one aspect/feature/goal per post. Also most of this will not be specific to Plasma Mobile but will work on any desktop or mobile Linux.</p>
+
+
+
+<p>So lets get started <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+
+
+<h2>Part 0: Basic application</h2>
+
+
+
+<p>Before getting started we need to install a few things. First of all we need Python (obviously) and Qt for Python. Qt for Python was formerly known as PySide2. You can install it via &#8216;pip install pyside2&#8217;. Next there is Kirigami. On Ubuntu you can install it via &#8216;sudo apt install qml-module-org-kde-kirigami2&#8217;. </p>
+
+
+
+<p>After that we can start coding. The following main.py file is creating an app and loading the UI from a .qml file. The exact details are not too important at this point.</p>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/env python3
+
+from PySide2.QtGui import QGuiApplication
+from PySide2.QtQml import QQmlApplicationEngine
+
+if __name__ == "__main__":
+    app = QGuiApplication()
+    engine = QQmlApplicationEngine()
+
+    context = engine.rootContext()
+    engine.load("qml/main.qml")
+
+    if len(engine.rootObjects()) == 0:
+        quit()
+    app.exec_()
+</code></pre>
+
+
+
+<p>Next we need to define our UI in a QML file. To keep things organized we are going to put our QML files in a qml/ subfolder. Our first main.qml is rather simple</p>
+
+
+
+<pre class="wp-block-code"><code>import QtQuick 2.2
+import QtQuick.Controls 2.4
+import org.kde.kirigami 2.0 as Kirigami
+
+Kirigami.ApplicationWindow
+{
+    width: 480
+    height: 720
+
+    Label {
+        text: "Hello world!"
+        anchors.centerIn: parent
+    }
+}</code></pre>
+
+
+
+<p>width and height are a bit arbitrary since the window will always be maximized on the phone, but this way we get a somewhat realistic window on the desktop. Executing the python file should result in something like this</p>
+
+
+
+<figure class="wp-block-image"><img data-attachment-id="160" data-permalink="https://nicolasfella.wordpress.com/image/" data-orig-file="https://nicolasfella.files.wordpress.com/2019/02/image.png" data-orig-size="528,790" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image" data-image-description="" data-medium-file="https://nicolasfella.files.wordpress.com/2019/02/image.png?w=201" data-large-file="https://nicolasfella.files.wordpress.com/2019/02/image.png?w=528" src="https://nicolasfella.files.wordpress.com/2019/02/image.png" alt="" class="wp-image-160" /></figure>
+
+
+
+<p>In the next post we are going to fill this window with more life using QtQuick and Kirigami components. Stay tuned <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+
+
+<p>The source code will be available at <a href="https://invent.kde.org/nicolasfella/kstraba">https://invent.kde.org/nicolasfella/kstraba</a></p></p>
+</main>
+
+
+    <footer id="kFooter" class="footer">
+    <section id="kFooterIncome" class="container">
+        <div id="kDonateForm" class="w-100">
+            <div class="center">
+                <h3>
+                    Donate to KDE
+                    <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
+                </h3>
+
+                <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input type="hidden" name="lc" value="GB" />
+                    <input type="hidden" name="item_name" value="Development and communication of KDE software" />
+                    <input type="hidden" name="custom" value="/" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="hidden" name="cbt" value="Return to www.kde.org" />
+                    <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
+                    <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
+                    <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
+                    <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
+                    <button type='submit' id="donateSubmit">Donate via PayPal</button>
+                </form>
+
+                <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kLinks" class="container">
+        <div class="row">
+            
+                
+                    <nav class="col-sm">
+                        <h3>Products</h3>
+                        
+                            <a href="https://kde.org/plasma-desktop">Plasma</a>
+                        
+                            <a href="https://kde.org/applications/">KDE Applications</a>
+                        
+                            <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
+                        
+                            <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+                        
+                            <a href="https://neon.kde.org/">KDE neon</a>
+                        
+                            <a href="https://wikitolearn.org/">WikiToLearn</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Develop</h3>
+                        
+                            <a href="https://techbase.kde.org/">TechBase Wiki</a>
+                        
+                            <a href="https://api.kde.org/">API Documentation</a>
+                        
+                            <a href="https://doc.qt.io/">Qt Documentation</a>
+                        
+                            <a href="https://inqlude.org/">Inqlude Documentation</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>News &amp; Press</h3>
+                        
+                            <a href="https://kde.org/announcements/">Announcements</a>
+                        
+                            <a href="https://dot.kde.org/">KDE.news</a>
+                        
+                            <a href="https://planetkde.org/">Planet KDE</a>
+                        
+                            <a href="https://www.kde.org/screenshots">Screenshots</a>
+                        
+                            <a href="https://www.kde.org/contact/">Press Contact</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Resources</h3>
+                        
+                            <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+                        
+                            <a href="https://userbase.kde.org/">UserBase Wiki</a>
+                        
+                            <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+                        
+                            <a href="https://kde.org/support/">Support</a>
+                        
+                            <a href="https://kde.org/support/international.php">International Websites</a>
+                        
+                            <a href="https://kde.org/download/">Download KDE Software</a>
+                        
+                            <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
+                        
+                    </nav>
+                
+                    <nav class="col-sm">
+                        <h3>Destinations</h3>
+                        
+                            <a href="https://store.kde.org/">KDE Store</a>
+                        
+                            <a href="https://ev.kde.org/">KDE e.V.</a>
+                        
+                            <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+                        
+                            <a href="https://timeline.kde.org/">KDE Timeline</a>
+                        
+                    </nav>
+                
+            
+        </div>
+    </section>
+
+    <section id="kSocial" class="container kSocialLinks">
+        <a class="shareFacebook" href="https://www.facebook.com/kde/" rel="nofollow">Post on Facebook</a>
+        <a class="shareTwitter" href="https://twitter.com/kdecommunity" rel="nofollow">Share on Twitter</a>
+        <a class="shareDiaspora" href="https://joindiaspora.com/people/9c3d1a454919ef06" rel="nofollow">Share on Diaspora</a>
+        <a class="shareMastodon" href="https://mastodon.technology/@kde" rel="me nofollow">Share on Mastodon</a>
+        <a class="shareLinkedIn" href="https://www.linkedin.com/company/29561/" rel="nofollow">Share on LinkedIn</a>
+        <a class="shareReddit" href="https://www.reddit.com/r/kde/" rel="nofollow">Share on Reddit</a>
+        <a class="shareYouTube" href="https://www.youtube.com/channel/UCF3I1gf7GcbmAb0mR6vxkZQ" rel="nofollow">Share on YouTube</a>
+        <a class="sharePeerTube" href="https://peertube.mastodon.host/accounts/kde/videos" rel="nofollow">Share on PeerTube</a>
+        <a class="shareVK" href="https://vk.com/kde_ru" rel="nofollow">Share on VK</a>
+    </section>
+
+    <section id="kLegal" class="container">
+        <div class="row">
+            <small class="col-4">
+                Maintained by <a href="mailto:kde-www@kde.org">KDE www</a>
+            </small>
+            <small class="col-8 text-right">
+                KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+            </small>
+        </div>
+    </section>
+</footer>
+
+
+
+
+    </body>
+</html>
