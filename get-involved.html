@@ -150,28 +150,27 @@
                 </p>
 
 
-                <h2 class="headinglink">List of chats</h2>
+                
 
-                <ul class="liblist-ul">
-                    <li class="liblist" class="liblist">
-                        <a href="irc://irc.freenode.org/#kdeconnect">IRC:#kdeconnect on Freenode</a>
-                    </li>
-                    <li class="liblist">
-                        <a href="https://t.me/joinchat/AOS6gA37orb2dZCLhqbZjg">KDE Connect Dev Telegram</a>
-                    </li>
-                    <li class="liblist">
-                        <a href="https://webchat.kde.org/#/welcome">Welcome Matrix-Place to Start</a>
-                    </li>
-                    <li class="liblist">
-                        <a href="https://mail.kde.org/mailman/listinfo/kdeconnect">KDE Connect Mailing List</a>
-                    </li>
-                    <li class="liblist">
-                        <a href="https://community.kde.org/Telegram">Other Telegram Channels</a>
-                    </li>
-                    <li class="liblist">
-                        <a href="https://userbase.kde.org/IRC_Channels">Other IRC</a>
-                    </li>
-                </ul>
+               
+                <div class="tab">
+                    <input id="chatcontent" type="checkbox"/>
+                    <label class="tab-label" for="chatcontent">List of Chats</label>
+                    <div class="tab-content chatcontent">
+                        <button class="listblue"><a href="irc://irc.freenode.org/#kdeconnect">IRC:#kdeconnect on Freenode</a></button>
+                        <button class="listblue"><a href="https://t.me/joinchat/AOS6gA37orb2dZCLhqbZjg">KDE Connect Dev Telegram</a></button>
+                        <button class="listblue"><a href="https://webchat.kde.org/#/welcome">Welcome Matrix-Place to Start</a></button>
+                        <button class="listblue"><a href="https://mail.kde.org/mailman/listinfo/kdeconnect">KDE Connect Mailing List</a></button>
+                        <button class="listblue"><a href="https://community.kde.org/Telegram">Other Telegram Channels</a></button>
+                        <button class="listblue"><a href="https://userbase.kde.org/IRC_Channels">Other IRC</a></button>
+                        
+
+                        
+                        
+
+                           
+                    </div>
+                </div>
 
 
                 <h4 class="letter-head">
@@ -223,22 +222,12 @@
                                 We always get asked about the libraries that are used in KDE Connect Development, some of them are not packaged by some distros yet. You can build them from source. Some of the dependencies are some versions behind. Some of the most asked ones are listed below:
                             </p>
                             <div>
-                                <ul class="liblist-ul">
-                                    <li class="liblist">
-                                        <a href="https://www.qt.io/download">Qt</a>
-                                    </li>
-                                    <li class="liblist">
-                                        <a href="https://github.com/KDE/pulseaudio-qt">KF5PulseAudioQt</a>
-                                    </li>
-
-                                    <li class="liblist">
-                                        <a href="https://github.com/KDE/kpeoplevcard">KF5PeopleVCard</a>
-                                    </li>
-                                    <li class="liblist">
-                                        <a href="https://api.kde.org/frameworks/kirigami/html/index.html">Kirigami2</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                
+                                    <button class="listblue"><a href="https://www.qt.io/download">Qt</a></button>
+                                    <button class="listblue"><a href="https://github.com/KDE/pulseaudio-qt">KF5PulseAudioQt</a></button>
+                                    <button class="listblue"><a href="https://github.com/KDE/kpeoplevcard">KF5PeopleVCard</a></button>
+                                    <button class="listblue"><a href="https://api.kde.org/frameworks/kirigami/html/index.html">Kirigami2</a></button>
+                         </div>
                             <p>
                                 The full Libraries list can be found in the CMakeLists.txt file
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 and they are available at the
@@ -300,96 +289,34 @@
                     <input id="contribute" type="checkbox"/>
                     <label class="tab-label" for="contribute">Other Ways To Contribute</label>
                     <div class="tab-content contribute">
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/Issue_Reporting">
-                                <button class="learnmore">
-                                    Issue Reporting : Found an issue or have an idea for
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      improvement? Tell us.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging">
-                                <button class="learnmore">
-                                    Bug Triaging: Help us find the bugs to fix on Bugzilla.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/translation">
-                                <button class="learnmore">
-                                    Translation: Help us Translate projects to your language.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/design">
-                                <button class="learnmore">
-                                    Visual and Human Interface Design: Help us learn how users
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      interact and improve.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/documentation">
-                                <button class="learnmore">
-                                    Documentation: Help us improve our documentation to make users
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      comfortable.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/support">
-                                <button class="learnmore">
-                                    User Support: Help other users by finding solutions to their
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      problems.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/promotion">
-                                <button class="learnmore">
-                                    Promotion: Help us spread the word!
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/KDE.org">
-                                <button class="learnmore">
-                                    Web Design: Help us improve the KDE Web Presence.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved/accessibility">
-                                <button class="learnmore">
-                                    Accessibility:Make Projects easy to use for people with
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      visual,auditory and motor disabilities.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Incubator">
-                                <button class="learnmore">
-                                    Your Project to KDE: Learn about our incubation program.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://www.kde.org/community/donations/index.php">
-                                <button class="learnmore">
-                                    Donate: All things don't come free. Help us run KDE.
-                                </button>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://community.kde.org/Get_Involved">
-                                <button class="learnmore">
-                                    More: There are even more ways, more than what could be listed
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      out.
-                                </button>
-                            </a>
-                        </p>
+                        
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/Issue_Reporting">Issue Reporting : Found an issue or have an idea for improvement? Tell us.</a></button>
+                        
+                        
+                            
+                            <button class="listblue"><a href="https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging"> Bug Triaging: Help us find the bugs to fix on Bugzilla.</a></button>
+                        
+                        
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/translation">Translation: Help us Translate projects to your language.</a></button>
+                        
+                        
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/design">Visual and Human Interface Design: Help us learn how users interact and improve.</a></button>
+                        
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/documentation">Documentation: Help us improve our documentation to make user comfortable.</a></button>
+                           
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/support">User Support: Help other users by finding solutions to their problems.</a></button>
+                            
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/promotion"> Promotion: Help us spread the word!</a></button>
+                        
+                            <button class="listblue"><a href="https://community.kde.org/KDE.org">Web Design: Help us improve the KDE Web Presence.</a></button>
+                      
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved/accessibility">Accessibility:Make Projects easy to use for people with visual,auditory and motor disabilities.</a></button>
+                        
+                            <button class="listblue"><a href="https://community.kde.org/Incubator">Your Project to KDE: Learn about our incubation program.</a></button>
+                        
+                            <button class="listblue"><a href="https://www.kde.org/community/donations/index.php"> Donate: All things don't come free. Help us run KDE.</a></button>
+                           
+                            <button class="listblue"><a href="https://community.kde.org/Get_Involved"> More: There are even more ways, more than what could be listed out.</a></button>
                     </div>
                 </div>
             </div>

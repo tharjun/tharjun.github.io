@@ -38,3 +38,9 @@ $ ruby -r 'jekyll/planet' -e 'JekyllPlanet.main'
 ```
 
 then run jekyll build to build the site.
+
+## KDE Connect Video Promo Assets
+
+The assets, video files and Kdenlive Project File for the promo video is [on share.kde.org](https://share.kde.org/s/syBwRjeWpx6g6Ta?path=%2FVideo%2FKDE%20Connect%2FKDE%20Connect%20Website%20Promo%20Video)
+
+
