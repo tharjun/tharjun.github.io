@@ -248,4 +248,7 @@ button.listblue{
   text-decoration: none;
   transition: color 0.3s;
 }
-
+.listblue.in{
+  padding: 15px;
+  margin: 10px;
+}
