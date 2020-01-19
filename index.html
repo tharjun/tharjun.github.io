@@ -48,10 +48,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar-kde">
             <ul class="navbar-nav mr-auto">
+                
                 <li class="nav-item">
                     <a class="nav-link active"
                        href="/" aria-haspopup="true" aria-expanded="false">KDE Connect</a>
                 </li>
+                
                 
 
                 
@@ -134,14 +136,14 @@
   <picture>
     <source srcset="assets/img/hero_main.webp" type="image/webp" />
     <source srcset="assets/img/hero_main.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/hero_main.png" alt="Alt Text!" />
+    <img class="img-fluid fiximg" src="assets/img/hero_main.png" alt="Alt Text!" />
   </picture>
 </section>
 <section id="videosection">
   <iframe
     allowfullscreen=""
     frameborder="0"
-    src="https://www.youtube.com/embed/VINeXZ1m5iY"
+    src="https://www.youtube.com/embed/Yk-9IMsFSg8"
     width="560"
     height="315"
   ></iframe>
@@ -165,7 +167,7 @@
   <picture>
     <source srcset="assets/img/music.webp" type="image/webp" />
     <source srcset="assets/img/music.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/music.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/music.png" alt="Feature" />
   </picture>
 </section>
 
@@ -185,7 +187,7 @@
   <picture>
     <source srcset="assets/img/Notifications.webp" type="image/webp" />
     <source srcset="assets/img/Notifications.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/Notifications.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/Notifications.png" alt="Feature" />
   </picture>
 </section>
 
@@ -205,7 +207,7 @@
   <picture>
     <source srcset="assets/img/command.webp" type="image/webp" />
     <source srcset="assets/img/command.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/command.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/command.png" alt="Feature" />
   </picture>
 </section>
 
@@ -225,7 +227,7 @@
   <picture>
     <source srcset="assets/img/files.webp" type="image/webp" />
     <source srcset="assets/img/files.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/files.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/files.png" alt="Feature" />
   </picture>
 </section>
 
@@ -245,7 +247,7 @@
   <picture>
     <source srcset="assets/img/ring.webp" type="image/webp" />
     <source srcset="assets/img/ring.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/ring.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/ring.png" alt="Feature" />
   </picture>
 </section>
 
@@ -265,7 +267,7 @@
   <picture>
     <source srcset="assets/img/more.webp" type="image/webp" />
     <source srcset="assets/img/more.png" type="image/png" />
-    <img class="img-fluid" src="assets/img/more.png" alt="Feature" />
+    <img class="img-fluid fiximg" src="assets/img/more.png" alt="Feature" />
   </picture>
 </section>
 
@@ -387,32 +389,34 @@
 
 
     <footer id="kFooter" class="footer">
-    <section id="kFooterIncome" class="container">
-        <div id="kDonateForm" class="w-100">
-            <div class="center">
-                <h3>
-                    Donate to KDE
-                    <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
-                </h3>
+    
+        <section id="kFooterIncome" class="container">
+            <div id="kDonateForm" class="w-100">
+                <div class="center">
+                    <h3>
+                        Donate to KDE
+                        <a href="https://www.kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a>
+                    </h3>
 
-                <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
-                    <input type="hidden" name="cmd" value="_donations" />
-                    <input type="hidden" name="lc" value="GB" />
-                    <input type="hidden" name="item_name" value="Development and communication of KDE software" />
-                    <input type="hidden" name="custom" value="/" />
-                    <input type="hidden" name="currency_code" value="EUR" />
-                    <input type="hidden" name="cbt" value="Return to www.kde.org" />
-                    <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
-                    <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
-                    <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
-                    <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
-                    <button type='submit' id="donateSubmit">Donate via PayPal</button>
-                </form>
+                    <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                        <input type="hidden" name="cmd" value="_donations" />
+                        <input type="hidden" name="lc" value="GB" />
+                        <input type="hidden" name="item_name" value="Development and communication of KDE software" />
+                        <input type="hidden" name="custom" value="/" />
+                        <input type="hidden" name="currency_code" value="EUR" />
+                        <input type="hidden" name="cbt" value="Return to www.kde.org" />
+                        <input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" />
+                        <input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" />
+                        <input type="hidden" name="business" value="kde-ev-paypal@kde.org" />
+                        <input type='text' name="amount" value="10.00" id="donateAmountField" /> €
+                        <button type='submit' id="donateSubmit">Donate via PayPal</button>
+                    </form>
 
-                <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+                    <a href="https://www.kde.org/community/donations/others.php" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
 
     <section id="kLinks" class="container">
         <div class="row">

@@ -292,3 +292,27 @@ button.learnmore:active::before {
   box-shadow: 0 0 0 2px #003333, 0 0 #1cdc9a;
   transform: translate3d(0, 0, -1em);
 }
+@media screen and ( max-height: 846px ) and (orientation : landscape){
+  .fiximg{
+    max-width: 400px;
+  }
+  .feature h1{
+    font-size: 25px !important;
+  }
+  .feature h2{
+    font-size: 19px !important;
+  }
+}
+
+@media screen and ( max-height: 568px ) and (orientation : landscape){
+  .fiximg{
+    max-width: 400px;
+  }
+  .feature h1{
+    font-size: 20px !important;
+  }
+  .feature h2{
+    font-size: 16px !important;
+  }
+}
+}
