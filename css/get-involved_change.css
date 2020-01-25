@@ -1,10 +1,8 @@
-.letter-head {
-  margin-top: 50px;
-}
+
 
 .letter p {
   font-size: 20px;
-  margin-top: 10px;
+  
 }
 
 .card-title.cardheading {
@@ -17,9 +15,7 @@
   font-size: 16px;
 }
 
-.row.Junior {
-  margin-top: 20px;
-}
+
 
 .card-body.Junior {
   text-align: center;
@@ -52,9 +48,7 @@
   font-weight: bold;
 }
 
-.lib {
-  margin-top: 10px;
-}
+
 
 .topsec {
   text-align: center;
@@ -63,17 +57,13 @@
 
 .topsec h4 {
   font-size: 28px;
-  padding-top: 35px;
-  padding-left: 10px;
-  padding-right: 10px;
+  
   color: white !important;
 }
 
 .topsec h3 {
   font-weight: bold;
-  font-size: 32px;
-  padding-left: 10px;
-  padding-right: 10px;
+  
   color: white !important;
 }
 
@@ -86,9 +76,8 @@
   border-color: black;
 }
 
-.letter-article {
-  margin-top: 50px;
-}
+
+  
 .tab input {
   position: absolute;
   opacity: 0;
@@ -96,7 +85,7 @@
 }
 
 .tabs {
-  border-radius: 8px;
+ 
   overflow: hidden;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
 }
@@ -177,7 +166,6 @@ input:checked ~ .tab-content {
   align-items: center;
   box-shadow: 4px 4px 20px -2px #95a5a6;
   transition: all 0.4s;
-  margin-left: 40px;
 }
 
 
@@ -222,7 +210,7 @@ input:checked ~ .tab-content {
 
 button.listblue{
 
-  border-radius: 8px;
+ 
   line-height: 1.5;
   width: 100%;
   margin: 2px;
@@ -248,7 +236,7 @@ button.listblue{
   text-decoration: none;
   transition: color 0.3s;
 }
-.listblue.in{
-  padding: 15px;
-  margin: 10px;
+
+.smaller{
+  font-size: 18px;
 }

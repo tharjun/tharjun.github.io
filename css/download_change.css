@@ -1,14 +1,14 @@
 .down-head {
   font-weight: bold;
   font-size: 25px;
-  margin-top: 20px;
+ 
 }
 
 @media (min-width: 992px) {
   .down-head {
     font-weight: bold;
     font-size: 35px;
-    margin-top: 20px;
+    
   }
 }
 
@@ -27,7 +27,7 @@
 }
 
 .button.getbutton {
-  margin-bottom: 20px;
+  
   font-size: 18px;
 }
 
@@ -44,12 +44,7 @@
   font-weight: 400;
 }
 
-.card-deck.text-center.downloadgroup {
-  margin-bottom: 20px;
-  margin-right: 50px;
-  margin-left: 50px;
-  margin-top: 50px;
-}
+
 
 @media (max-width: 768px) {
   .card-title.titlecard {
@@ -73,49 +68,18 @@
 .topkonqi h3 {
   font-weight: bold;
   font-size: 32px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 35px;
+  
   color: white;
 }
 
-.topkonqi h4 {
-  font-size: 28px;
-  padding-top: 35px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: white;
-}
 
 .topkonqi {
   background-color: #31363b;
 }
 
-.imagecol {
-  background-color: transparent;
-  padding-top: 20px;
-}
 
-@media (min-width: 768px) {
-  .OSBlock.alt {
-    display: none;
-  }
-}
 
-@media (max-width: 767px) {
-  .OSBlock.main {
-    display: none;
-  }
-}
-.card.announcements {
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
 
-.divheadannoun {
-  font-weight: bold;
-  margin-top: 50px;
-}
 #videosection {
   text-align: center;
 }
@@ -123,19 +87,17 @@
 #videosection iframe {
   width: 90%;
   height: 453px;
-  margin-top: 50px;
+  
 }
 
 @media (min-width: 992px) {
   #videosection iframe {
     width: 896px;
     height: 504px;
-    margin-top: 50px;
+    
   }
 }
-.fixpad {
-  margin: 30px;
-}
+
 
 @media screen and ( max-width: 1494px ){
   .prodim{
